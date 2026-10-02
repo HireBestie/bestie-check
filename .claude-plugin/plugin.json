@@ -16,5 +16,6 @@
     "qa",
     "mcp"
   ],
+  "icon": "./assets/bestie-logo.png",
   "mcpServers": "./.mcp.json"
 }
