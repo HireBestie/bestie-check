@@ -1,0 +1,16 @@
+{
+  "name": "bestie",
+  "description": "Bestie plugins that check the reasoning of a document before it goes out.",
+  "owner": {
+    "name": "Bestie",
+    "url": "https://www.hirebestie.com"
+  },
+  "plugins": [
+    {
+      "name": "bestie-check",
+      "source": "./",
+      "description": "Prepare document deliverables with Bestie Check before handoff and read the free Claim and Assumption Quick Look.",
+      "version": "1.2.0"
+    }
+  ]
+}

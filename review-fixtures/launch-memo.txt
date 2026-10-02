@@ -1,0 +1,13 @@
+FICTIONAL REVIEW FIXTURE — Bestie Check
+
+Harbor Labs launch memo
+
+We propose launching the new report editor to all customers next month.
+In a pilot, 18 of 24 participants completed a report without assistance.
+We predict that the launch will reduce support requests by 40 percent.
+The pilot participants volunteered and all had used our earlier editor.
+The new editor has not yet been tested with first-time users.
+We assume that customers outside the pilot will complete reports at the same rate.
+We also assume that fewer editing questions will translate into fewer support requests.
+The launch depends on the migration finishing before the end of this month.
+If migration takes longer, we will postpone the launch.

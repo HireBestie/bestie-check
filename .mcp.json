@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "bestie-check": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@mybestie/check",
+        "mcp"
+      ]
+    }
+  }
+}

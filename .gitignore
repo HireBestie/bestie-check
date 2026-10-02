@@ -1,0 +1,8 @@
+node_modules/
+.env
+.env.*
+*.tgz
+*.zip
+.mcpregistry_*
+key.pem
+reviewer-credentials*

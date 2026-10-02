@@ -1,0 +1,14 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "bestie-check": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@mybestie/check",
+        "mcp"
+      ]
+    }
+  }
+}

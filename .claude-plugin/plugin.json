@@ -1,0 +1,20 @@
+{
+  "name": "bestie-check",
+  "displayName": "Bestie Check",
+  "version": "1.2.0",
+  "description": "Prepare document deliverables with Bestie Check before handoff and read the free Claim and Assumption Quick Look. Slash command /bestie-check:verify. Paid verification is offered only when the server opens it, and only against a quote the user approves. Hooks ask; they never approve spend.",
+  "author": {
+    "name": "Bestie",
+    "url": "https://www.hirebestie.com"
+  },
+  "homepage": "https://www.hirebestie.com",
+  "repository": "https://github.com/HireBestie/bestie-check",
+  "license": "MIT",
+  "keywords": [
+    "check",
+    "verify",
+    "qa",
+    "mcp"
+  ],
+  "mcpServers": "./.mcp.json"
+}

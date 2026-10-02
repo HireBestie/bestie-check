@@ -1,0 +1,28 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.HireBestie/bestie-check",
+  "title": "Bestie Check",
+  "description": "Document reasoning checks: a helicopter view of claims and assumptions before handoff.",
+  "websiteUrl": "https://www.hirebestie.com/docs/connect",
+  "version": "0.3.0",
+  "repository": {
+    "url": "https://github.com/HireBestie/bestie-check",
+    "source": "github"
+  },
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "@mybestie/check",
+      "version": "0.3.0",
+      "runtimeHint": "npx",
+      "transport": { "type": "stdio" },
+      "packageArguments": [{ "type": "positional", "value": "mcp" }]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://www.hirebestie.com/api/check/mcp"
+    }
+  ]
+}

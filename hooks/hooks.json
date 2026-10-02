@@ -1,0 +1,15 @@
+{
+  "description": "Ask whether to prepare the deliverable with Bestie Check before stopping. Never approves spend and never calls verify_deliverable.",
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "You are about to stop. If this turn produced or is about to return a document deliverable, ASK the user whether to prepare it with Bestie Check and read its Claim and Assumption Quick Look. Do not call verify_deliverable unless the user has approved a specific quote. Do not set creditReservationApproved on your own. Do not pass --approve, --approve-quote, or --approve-up-to unless the user gave them. Do not spend credits. Plugins and hooks never mint quote-bound approval. If no document deliverable is being handed off, or Check already completed and was disclosed, respond {\"ok\": true}. If a deliverable is being handed off and Check has not been offered, respond {\"ok\": false, \"reason\": \"Ask the user whether to prepare this deliverable with Bestie Check before finishing. Do not approve spend.\"}."
+          }
+        ]
+      }
+    ]
+  }
+}

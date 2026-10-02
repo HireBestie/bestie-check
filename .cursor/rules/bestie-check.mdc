@@ -1,0 +1,44 @@
+---
+description: Bestie Check — prepare document deliverables before handoff and read the free Claim and Assumption Quick Look. Paid verification only when the server opens it and the user approves a specific quote; never approve spend for the user.
+alwaysApply: true
+---
+
+# Bestie Check
+
+Before returning a document deliverable, prepare it with Check and read its Quick Look.
+
+Use the single `bestie-check` MCP server. This plugin configures it over stdio (`npx -y @mybestie/check mcp`). Hosts that connect by URL (connectors in Claude, ChatGPT, Grok, Muse) use https://www.hirebestie.com/api/check/mcp **instead**; never configure both. Do not reimplement Check.
+
+## Sequence
+
+1. `inspect_capabilities` once.
+2. `prepare_deliverable` (text or URL) or `prepare_file_upload` → PUT → `confirm_file_upload` (files). Keep the `uploadHandleId`; never paste file bytes.
+3. Poll `get_preparation` while `nextAction` is `wait`. On `retry`, call `retry_preparation` once. On `replace_source`, prepare the source again once.
+4. On `review`, report the claims and assumptions as returned. Never grade them.
+
+Paid verification (`quote_check`, `verify_deliverable`, `create_repair`) exists only when `inspect_capabilities` reports `paidExecution.available: true`. When it does not, do not call those tools, do not promise the user a verdict, a price or findings, and say that paid verification is not open (give the reason `inspect_capabilities` returned). When it does, it runs only against a quote the user approved. You never approve spend on the user's behalf. Paid runs need the user's explicit, quote-bound approval (the quote id, its hash and a credit ceiling: `--approve-quote`, `--approve-quote-hash`, `--approve-up-to`); rules and plugins never grant it.
+
+## Tools
+
+- `inspect_capabilities`
+- `inspect_packs`
+- `prepare_deliverable`
+- `prepare_file_upload`
+- `confirm_file_upload`
+- `get_preparation`
+- `retry_preparation`
+- `get_check`
+- `get_tasks`
+- `get_findings`
+- `get_fix_list`
+- `get_artifacts`
+- `get_receipt`
+- `create_ruling`
+- `get_diff`
+- `get_lineage`
+- `export_check`
+- `delete_check`
+
+## Disclosure
+
+If Check was not used, say so. If preparation is partial or failed, say so. Cursor has no supported blocking lifecycle hook for this; git pre-commit and CI enforce it. Rules and plugins never approve or spend.
