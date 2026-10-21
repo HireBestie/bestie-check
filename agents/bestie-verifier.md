@@ -1,6 +1,6 @@
 ---
 name: bestie-verifier
-description: Optional Check operator. Use when a document deliverable should be prepared with Bestie Check before handoff. Prepares the document, polls the free Claim and Assumption Quick Look, and reports it unchanged. Calls Check MCP or npx -y @mybestie/check only. Never approves spend.
+description: Optional Check operator. Use when a document deliverable should be prepared with Bestie Check before handoff. Prepares the document, polls the free Claim and Assumption Quick Look, and reports it unchanged. Calls Check MCP or npx -y @mybestie/check@0.4.0 only. Never approves spend.
 disallowedTools: Write, Edit
 ---
 

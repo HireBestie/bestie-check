@@ -1,7 +1,7 @@
 {
   "name": "bestie-check",
   "version": "1.3.0",
-  "description": "Check-before-handoff: prepare document deliverables with Bestie Check and read the free Claim and Assumption Quick Look. Invoke the bundled MCP server or npx -y @mybestie/check only. Paid verification is offered only when the server opens it, and only against a quote the user approves. Never approve spend for the user.",
+  "description": "Check-before-handoff: prepare document deliverables with Bestie Check and read the free Claim and Assumption Quick Look. Invoke the bundled MCP server or npx -y @mybestie/check@0.4.0 only. Paid verification is offered only when the server opens it, and only against a quote the user approves. Never approve spend for the user.",
   "author": {
     "name": "Bestie",
     "url": "https://www.hirebestie.com"
@@ -26,7 +26,7 @@
   "interface": {
     "displayName": "Bestie Check",
     "shortDescription": "Prepare deliverables before handoff",
-    "longDescription": "Prepare a document deliverable with Bestie Check before returning it and read the free Claim and Assumption Quick Look: the claims it makes and the assumptions they rest on. Invoke MCP or npx -y @mybestie/check only. Paid verification is offered only when the server opens it, and only against a quote the user approves. Plugins never approve spend.",
+    "longDescription": "Prepare a document deliverable with Bestie Check before returning it and read the free Claim and Assumption Quick Look: the claims it makes and the assumptions they rest on. Invoke MCP or npx -y @mybestie/check@0.4.0 only. Paid verification is offered only when the server opens it, and only against a quote the user approves. Plugins never approve spend.",
     "developerName": "Bestie",
     "category": "Productivity",
     "websiteURL": "https://www.hirebestie.com",

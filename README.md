@@ -31,6 +31,8 @@ npx -y @mybestie/check@0.4.0 mcp
 
 The plugin's local MCP process pins `@mybestie/check@0.4.0`. Sign in through the CLI first. WorkOS uses a PKCE loopback callback; access and rotating refresh tokens stay in the CLI's private credential store. Choose Personal for an individual account, or a company workspace configured by its administrator. You may instead configure `BESTIE_API_KEY` in your host's private environment. Never commit a key or include one in a prompt.
 
+The npm package bundles its JavaScript dependencies into the Node binaries. It declares no runtime or optional dependencies and no install lifecycle scripts, so launching the exact package does not resolve a separate dependency tree at installation time.
+
 ### Claude Code
 
 ```text
@@ -51,7 +53,7 @@ Public directory acceptance is separate from this repository. This repository do
 ### Agent skill
 
 ```sh
-bunx skills add HireBestie/bestie-check --skill verify-deliverable
+bunx skills@1.7.4 add HireBestie/bestie-check --skill verify-deliverable
 ```
 
 ## Expected journey

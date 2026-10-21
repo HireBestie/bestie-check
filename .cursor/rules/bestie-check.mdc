@@ -7,7 +7,7 @@ alwaysApply: true
 
 Before returning a document deliverable, prepare it with Check and read its Quick Look.
 
-Use the single `bestie-check` MCP server. This plugin configures it over stdio (`npx -y @mybestie/check mcp`). Hosts that connect by URL (connectors in Claude, ChatGPT, Grok, Muse) use https://www.hirebestie.com/api/check/mcp **instead**; never configure both. Do not reimplement Check.
+Use the single `bestie-check` MCP server. This plugin configures it over stdio (`npx -y @mybestie/check@0.4.0 mcp`). Hosts that connect by URL (connectors in Claude, ChatGPT, Grok, Muse) use https://www.hirebestie.com/api/check/mcp **instead**; never configure both. Do not reimplement Check.
 
 ## Sequence
 

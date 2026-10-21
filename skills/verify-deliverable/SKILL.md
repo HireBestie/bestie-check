@@ -12,7 +12,7 @@ Use Check when you are about to return a **document deliverable** (a memo, a mod
 
 Paid verification (`quote_check`, `verify_deliverable`, `create_repair`) exists only when `inspect_capabilities` reports `paidExecution.available: true`. When it does not, do not call those tools, do not promise the user a verdict, a price or findings, and say that paid verification is not open (give the reason `inspect_capabilities` returned). When it does, it runs only against a quote the user approved. You never approve spend on the user's behalf.
 
-Invoke Check MCP tools or `npx -y @mybestie/check` only. Do not reimplement Check. This plugin runs one `bestie-check` server over stdio; a host that connects by URL uses https://www.hirebestie.com/api/check/mcp instead. Never configure both.
+Invoke Check MCP tools or `npx -y @mybestie/check@0.4.0` only. Do not reimplement Check. This plugin runs one `bestie-check` server over stdio; a host that connects by URL uses https://www.hirebestie.com/api/check/mcp instead. Never configure both.
 
 For a fresh local install, follow the bundled `setup-bestie` skill first. Sign in through managed WorkOS; request only the advertised identity scopes. Bestie checks current workspace permissions separately for each action.
 
