@@ -4,7 +4,7 @@
   "title": "Bestie Check",
   "description": "Document reasoning checks: a helicopter view of claims and assumptions before handoff.",
   "websiteUrl": "https://www.hirebestie.com/docs/connect",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "repository": {
     "url": "https://github.com/HireBestie/bestie-check",
     "source": "github"
@@ -13,7 +13,7 @@
     {
       "registryType": "npm",
       "identifier": "@mybestie/check",
-      "version": "0.3.0",
+      "version": "0.4.0",
       "runtimeHint": "npx",
       "transport": { "type": "stdio" },
       "packageArguments": [{ "type": "positional", "value": "mcp" }]

@@ -13,4 +13,4 @@ Follow the verify-deliverable skill:
 3. Poll `get_preparation` while `nextAction` is `wait`. Retry once on `retry`; re-prepare once on `replace_source`.
 4. Return the Quick Look unchanged: claims, assumptions, partial or complete.
 
-Paid verification (`quote_check`, `verify_deliverable`, `create_repair`) is your task only when the caller asks for it, `inspect_capabilities` reports `paidExecution.available: true`, and the caller passes you the quote the user approved. Never set `creditReservationApproved` on your own and never raise the approved ceiling. If Check was not used, or preparation is partial or failed, disclose that. Do not invent a verdict.
+Paid verification (`quote_check`, `verify_deliverable`, `create_repair`) is your task only when the caller asks for it, `inspect_capabilities` reports `paidExecution.available: true`, and the caller passes you the quote the user approved. Never set `approvalRef` on your own and never raise the approved ceiling. If Check was not used, or preparation is partial or failed, disclose that. Do not invent a verdict.
