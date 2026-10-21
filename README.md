@@ -4,7 +4,7 @@ See your document from above: every claim, and every assumption it rests on.
 
 Bestie Check prepares a memo, report, or other document for a reasoning check. The free **Quick Look** gives you a helicopter view of its claims and assumptions. Agents can also read findings and a fix list from checks in the connected account. Paid checks require server availability and approval of a specific quote.
 
-This repository contains the public plugin distribution. The Node CLI and stdio MCP implementation are bundled in [`@mybestie/check`](https://www.npmjs.com/package/@mybestie/check). Plugin version **1.2.0** uses CLI version **0.3.0**, published on npm.
+This repository contains the public plugin distribution. The Node CLI and stdio MCP implementation are bundled in [`@mybestie/check`](https://www.npmjs.com/package/@mybestie/check). Plugin version **1.3.0** uses CLI version **0.4.0**.
 
 ## Connect
 
@@ -23,13 +23,15 @@ Sign in to your Bestie account and authorize the connection. Use the hosted conn
 Requires Node.js 20 or newer and npm.
 
 ```sh
-npx -y @mybestie/check@0.3.0 login
-npx -y @mybestie/check@0.3.0 capabilities
-npx -y @mybestie/check@0.3.0 prepare --file memo.pdf --wait --progress
-npx -y @mybestie/check@0.3.0 mcp
+npx -y @mybestie/check@0.4.0 login
+npx -y @mybestie/check@0.4.0 capabilities
+npx -y @mybestie/check@0.4.0 prepare --file memo.pdf --wait --progress
+npx -y @mybestie/check@0.4.0 mcp
 ```
 
-The plugin's local MCP process pins `@mybestie/check@0.3.0`. Sign in through the CLI first; credentials stay in the CLI's local credential store. You may instead configure `BESTIE_API_KEY` in your host's private environment. Never commit a key or include one in a prompt.
+The plugin's local MCP process pins `@mybestie/check@0.4.0`. Sign in through the CLI first. WorkOS uses a PKCE loopback callback; access and rotating refresh tokens stay in the CLI's private credential store. Choose Personal for an individual account, or a company workspace configured by its administrator. You may instead configure `BESTIE_API_KEY` in your host's private environment. Never commit a key or include one in a prompt.
+
+The npm package bundles its JavaScript dependencies into the Node binaries. It declares no runtime or optional dependencies and no install lifecycle scripts, so launching the exact package does not resolve a separate dependency tree at installation time.
 
 ### Claude Code
 
@@ -40,6 +42,8 @@ The plugin's local MCP process pins `@mybestie/check@0.3.0`. Sign in through the
 
 Use `/bestie-check:verify` to prepare a document. The optional Stop hook asks whether to offer Check; it never approves spending.
 
+For first use, run the bundled `setup-bestie` skill. OAuth delegates identity with `openid profile email offline_access`; Bestie evaluates current workspace permissions for every action. Do not request `check:*` as OAuth scopes.
+
 ### Cursor and Codex
 
 The root `plugin.json`, `mcp.json`, and `skills/` form a portable Agent Plugin. `.codex-plugin/plugin.json` provides Codex compatibility metadata. `.cursor/mcp.json` and `.cursor/rules/bestie-check.mdc` provide a Cursor configuration and rule for manual setup. Follow your client's local-plugin setup instructions.
@@ -49,7 +53,7 @@ Public directory acceptance is separate from this repository. This repository do
 ### Agent skill
 
 ```sh
-bunx skills add HireBestie/bestie-check --skill verify-deliverable
+bunx skills@1.7.4 add HireBestie/bestie-check --skill verify-deliverable
 ```
 
 ## Expected journey
@@ -60,7 +64,9 @@ bunx skills add HireBestie/bestie-check --skill verify-deliverable
 4. Report the returned claims and assumptions without inventing findings or a verdict.
 5. For an existing check, read its findings and fix list using the account's authorized access.
 
-Paid tools are offered only when the server reports them ready. An agent must obtain approval for the actual quote, its hash, and a credit ceiling. Installing a plugin, signing in, or saying "check this" does not approve spending.
+Supply `documentType` and `documentDate` when known. For paid reviews, use the server's current presets and selected products, argument rows or review levels; do not assume every format, pack or project scope is admitted. Use `retry_units` or `cancel_check` only when advertised and requested. Keep the quote bound to the same prepared source.
+
+Paid tools are offered only when the server reports them ready. An agent must show the quote's `confirmationUrl` and wait for the human to approve it in authenticated Bestie. A run sends that quote's `approvalRef`, ID, hash, and credit ceiling. A chat yes or CLI flag does not create approval. Installing a plugin, signing in, or saying "check this" does not approve spending.
 
 ## Links
 
