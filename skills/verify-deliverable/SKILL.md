@@ -39,6 +39,10 @@ Not for general writing, brainstorming, formatting, or questions about Check its
 
 When the user wants to know how likely an assumption is, frame it first: `write` with `{ "operation": "frame_market", "uploadHandleId": "…", "assumptionId": "…" }` (an assumption id from `get_preparation`), or with `text` for a statement of its own. The result is the market (or 2-3 alternatives) with its resolution date and where that date comes from, YES and NO rules, what voids it, the author's reason and a rival explanation, and any cautions the framing check still has. Show it as returned. Pricing it is a paid simulation: `quote_check` with `framingId` and `uploadHandleId` (and `framingAlternative` when it was rewritten), then the approval steps below; afterwards `read` `get_simulations` gives the price and what the traders argued.
 
+## A document written to win a decision (free)
+
+For a comex storyline, a proposal, a memo or a pitch, `get_preparation` may carry `convictionQuestions`: ask the user each one, in your own words, then record the answers with `retry_preparation` (`intent`: `audience` for a group, `person` for one person, `check` to verify only; `audience` (who decides), `action` (what the document asks of them), `criteria`, `constraints`, `decisionDate`). This does not re-read the document. Once the reading is done and `audience` and `action` are known, `write` with `{ "operation": "brief_conviction", "uploadHandleId": "…" }` reads it as that decision-maker would: the thesis, the objections they will raise and whether the document already answers each (with the page), the claims missing to carry the decision, and the figures they will ask the source of. Show it as returned. It is a reading to prepare the document, not a verdict on its thesis and not a prediction of the decision; to estimate the decision, frame it with `frame_market`.
+
 ## Paid verification (only when `paidExecution.available` is true)
 
 1. **Review first.** Finish the Quick Look (`nextAction` is `review`).
