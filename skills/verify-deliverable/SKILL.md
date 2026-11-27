@@ -39,9 +39,18 @@ Not for general writing, brainstorming, formatting, or questions about Check its
 
 When the user wants to know how likely an assumption is, frame it first: `write` with `{ "operation": "frame_market", "uploadHandleId": "…", "assumptionId": "…" }` (an assumption id from `get_preparation`), or with `text` for a statement of its own. The result is the market (or 2-3 alternatives) with its resolution date and where that date comes from, YES and NO rules, what voids it, the author's reason and a rival explanation, and any cautions the framing check still has. Show it as returned. Pricing it is a paid simulation: `quote_check` with `framingId` and `uploadHandleId` (and `framingAlternative` when it was rewritten), then the approval steps below; afterwards `read` `get_simulations` gives the price and what the traders argued.
 
-## A document written to win a decision (free)
+## A proposal, a pitch or a comex storyline (free review)
 
-For a comex storyline, a proposal, a memo or a pitch, `get_preparation` may carry `convictionQuestions`: ask the user each one, in your own words, then record the answers with `retry_preparation` (`intent`: `audience` for a group, `person` for one person, `check` to verify only; `audience` (who decides), `action` (what the document asks of them), `criteria`, `constraints`, `decisionDate`). This does not re-read the document. Once the reading is done and `audience` and `action` are known, `write` with `{ "operation": "brief_conviction", "uploadHandleId": "…" }` reads it as that decision-maker would: the thesis, the objections they will raise and whether the document already answers each (with the page), the claims missing to carry the decision, and the figures they will ask the source of. Show it as returned. It is a reading to prepare the document, not a verdict on its thesis and not a prediction of the decision; to estimate the decision, frame it with `frame_market`.
+`write` with `{ "operation": "brief_conviction", "uploadHandleId": "…" }` reviews the deck as it stands, as its audience would read it, once the Quick Look is done. No rewriting into prose first. It returns, in this order for the user:
+
+1. **The narrative**: the thesis, the throughline and where it breaks, how clear the ask is, and the slides that fall flat.
+2. **What to change**, slide by slide (page and title), most decisive first: factual errors and overpromises always first, then an unclear ask, an unanswered objection, a flat slide, form. Each has a rewrite, or what to complete when the substance is missing: a rewrite never adds a figure the document does not give. Let the user accept or reject each one.
+3. **The internal checks**: an **error** is something the document contradicts itself on (a total that does not add up, a figure that changes between slides), shown with the passage that contradicts it; an **unsourced** claim is plausible but nothing in the document supports it, with what evidence would. Never present an unsourced claim as an error, nor either as verified.
+4. The objections by role and whether the document answers each, the missing claims, and in a stress test the hostile objections and the case for saying no.
+
+Settings, with defaults: `roast` (`stress_test` by default; `light` keeps the top 3 changes; `demanding` the full list) on the call or the upload, and on the upload `granularity` (`single` decision-maker by default, `committee` of 3 to 5 roles with a veto, `panel` of 6 to 10) and `roles`. The roast changes depth, never the facts. The audience is always roles: never pass or repeat a person's name (`namedPersonReplaced` says one was replaced). `audience`, `action`, `criteria`, `constraints` and `decisionDate` sharpen the reading (`retry_preparation` records them without re-reading); `get_preparation`'s `convictionQuestions` lists what to ask.
+
+The free review never gives a score. The score of its chances with this audience, and checks against outside sources, are paid: quote them, and show the price, before any spend. To estimate the decision as a market, frame it with `frame_market`.
 
 ## Paid verification (only when `paidExecution.available` is true)
 
